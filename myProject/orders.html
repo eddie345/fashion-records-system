@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order & Production Tracking</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f8f9fa; display: flex; min-height: 100vh; margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .sidebar { background-color: #212529; color: white; width: 250px; flex-shrink: 0; padding: 20px 0; }
+        .sidebar .nav-link { color: #adb5bd; padding: 10px 20px; font-weight: 500; }
+        .sidebar .nav-link:hover, .sidebar .nav-link.active { color: white; background-color: #343a40; }
+        .main-content { flex-grow: 1; padding: 30px; overflow-y: auto; }
+        .status-dropdown { min-width: 140px; }
+    </style>
+</head>
+<body>
+    <div class="sidebar d-none d-md-block">
+        <h4 class="text-center mb-4 px-3">Beon Fidence</h4>
+        <nav class="nav flex-column">
+            <a class="nav-link" href="dashboard.html">Dashboard</a>
+            <a class="nav-link" href="client_form.html">Clients & Measurements</a>
+            <a class="nav-link" href="inventory.html">Inventory Management</a>
+            <a class="nav-link" href="designs.html">Design Portfolio</a>
+            <a class="nav-link active" href="orders.html">Orders</a>
+        </nav>
+    </div>
+
+    <div class="main-content">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>Order & Production Tracking</h2>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newOrderModal">+ Log New Order</button>
+        </div>
+        
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th class="ps-4">Order ID</th>
+                                <th>Client Name</th>
+                                <th>Linked Design</th>
+                                <th>Status Workflow</th>
+                                <th>Created At</th>
+                                <th class="text-end pe-4">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th class="ps-4">#ORD-1042</th>
+                                <td>Sarah Jenkins</td>
+                                <td><a href="#" class="text-decoration-none border-bottom border-primary">Evening Gown (Blue)</a></td>
+                                <td>
+                                    <select class="form-select form-select-sm status-dropdown bg-warning border-warning text-dark fw-bold">
+                                        <option value="Creation">Creation</option>
+                                        <option value="Production" selected>Production</option>
+                                        <option value="Delivery">Delivery</option>
+                                    </select>
+                                </td>
+                                <td>Oct 24, 2023</td>
+                                <td class="text-end pe-4">
+                                    <button class="btn btn-sm btn-outline-secondary">View Details</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="ps-4">#ORD-1041</th>
+                                <td>Michael Smith</td>
+                                <td><a href="#" class="text-decoration-none border-bottom border-primary">Tuxedo 3-Piece</a></td>
+                                <td>
+                                    <select class="form-select form-select-sm status-dropdown bg-info border-info text-dark fw-bold">
+                                        <option value="Creation" selected>Creation</option>
+                                        <option value="Production">Production</option>
+                                        <option value="Delivery">Delivery</option>
+                                    </select>
+                                </td>
+                                <td>Oct 23, 2023</td>
+                                <td class="text-end pe-4">
+                                    <button class="btn btn-sm btn-outline-secondary">View Details</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="ps-4">#ORD-1040</th>
+                                <td>Emma Williams</td>
+                                <td><a href="#" class="text-decoration-none border-bottom border-primary">Floral Summer Dress</a></td>
+                                <td>
+                                    <select class="form-select form-select-sm status-dropdown bg-success border-success text-white fw-bold">
+                                        <option value="Creation">Creation</option>
+                                        <option value="Production">Production</option>
+                                        <option value="Delivery" selected>Delivery</option>
+                                    </select>
+                                </td>
+                                <td>Oct 21, 2023</td>
+                                <td class="text-end pe-4">
+                                    <button class="btn btn-sm btn-outline-secondary">View Details</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- New Order Modal -->
+    <div class="modal fade" id="newOrderModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Initiate Creation Workflow</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">Client Selection</label>
+                            <select class="form-select" required>
+                                <option disabled selected>Search for registered client...</option>
+                                <option>Sarah Jenkins</option>
+                                <option>Michael Smith</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Link Design from Archive (Optional)</label>
+                            <select class="form-select">
+                                <option disabled selected>Select an archived design...</option>
+                                <option>Evening Gown (Blue)</option>
+                                <option>Summer Suite 2024</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button class="btn btn-primary">Create Order</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Adjust background colors of the status selects when they change
+        document.querySelectorAll('.status-dropdown').forEach(select => {
+            select.addEventListener('change', function() {
+                this.classList.remove('bg-info', 'bg-warning', 'bg-success', 'border-info', 'border-warning', 'border-success', 'text-dark', 'text-white');
+                if(this.value === 'Creation') {
+                    this.classList.add('bg-info', 'border-info', 'text-dark');
+                } else if(this.value === 'Production') {
+                    this.classList.add('bg-warning', 'border-warning', 'text-dark');
+                } else {
+                    this.classList.add('bg-success', 'border-success', 'text-white');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

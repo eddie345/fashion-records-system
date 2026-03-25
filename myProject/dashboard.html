@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Beon Fidence</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f8f9fa; display: flex; min-height: 100vh; margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .sidebar { background-color: #212529; color: white; width: 250px; flex-shrink: 0; padding: 20px 0; }
+        .sidebar .nav-link { color: #adb5bd; padding: 10px 20px; font-weight: 500; }
+        .sidebar .nav-link:hover, .sidebar .nav-link.active { color: white; background-color: #343a40; }
+        .main-content { flex-grow: 1; padding: 30px; overflow-y: auto; }
+        .card-stats { border-left: 4px solid #0d6efd; transition: transform 0.2s; }
+        .card-stats:hover { transform: translateY(-5px); }
+    </style>
+</head>
+<body>
+    <div class="sidebar d-none d-md-block">
+        <h4 class="text-center mb-4 px-3">Beon Fidence</h4>
+        <nav class="nav flex-column">
+            <a class="nav-link active" href="dashboard.html">Dashboard</a>
+            <a class="nav-link" href="client_form.html">Clients & Measurements</a>
+            <a class="nav-link" href="inventory.html">Inventory Management</a>
+        </nav>
+        <hr class="border-secondary mx-3">
+        <nav class="nav flex-column">
+            <a class="nav-link text-danger" href="#">Sign Out</a>
+        </nav>
+    </div>
+
+    <!-- Mobile navbar fallback -->
+    <nav class="navbar navbar-dark bg-dark d-md-none fixed-top w-100 px-3">
+        <a class="navbar-brand" href="#">Beon Fidence</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mobileMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mobileMenu">
+            <ul class="navbar-nav ms-auto mt-2">
+                <li class="nav-item"><a class="nav-link active" href="dashboard.html">Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" href="client_form.html">Clients & Measurements</a></li>
+                <li class="nav-item"><a class="nav-link" href="inventory.html">Inventory</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="main-content" style="margin-top: 50px;">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>Admin Dashboard</h2>
+            <span class="badge bg-primary fs-6">Role: Admin</span>
+        </div>
+        
+        <div class="row g-4 mb-4">
+            <div class="col-xl-3 col-md-6">
+                <div class="card card-stats shadow-sm h-100">
+                    <div class="card-body">
+                        <h6 class="text-muted text-uppercase mb-2">Total Clients</h6>
+                        <h2 class="mb-0">124</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+                <div class="card card-stats shadow-sm h-100" style="border-left-color: #ffc107;">
+                    <div class="card-body">
+                        <h6 class="text-muted text-uppercase mb-2">Active Orders</h6>
+                        <h2 class="mb-0">18</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+                <div class="card card-stats shadow-sm h-100" style="border-left-color: #dc3545;">
+                    <div class="card-body">
+                        <h6 class="text-muted text-uppercase mb-2">Low Inventory Alerts</h6>
+                        <h2 class="text-danger mb-0">3</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+                <div class="card card-stats shadow-sm h-100" style="border-left-color: #198754;">
+                    <div class="card-body">
+                        <h6 class="text-muted text-uppercase mb-2">Designs Archived</h6>
+                        <h2 class="mb-0">89</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card shadow-sm border-0">
+            <div class="card-header bg-white py-3">
+                <h5 class="mb-0 fw-bold">Recent Production Orders</h5>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover table-borderless align-middle mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th class="ps-4">Order ID</th>
+                                <th>Client Name</th>
+                                <th>Design Reference</th>
+                                <th>Current Status</th>
+                                <th>Date Modified</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th class="ps-4">#ORD-1042</th>
+                                <td>Sarah Jenkins</td>
+                                <td>Evening Gown (Blue)</td>
+                                <td><span class="badge bg-warning text-dark">Production</span></td>
+                                <td>Oct 24, 2023</td>
+                            </tr>
+                            <tr>
+                                <th class="ps-4">#ORD-1041</th>
+                                <td>Michael Smith</td>
+                                <td>Tuxedo 3-Piece</td>
+                                <td><span class="badge bg-info text-dark">Creation</span></td>
+                                <td>Oct 23, 2023</td>
+                            </tr>
+                            <tr>
+                                <th class="ps-4">#ORD-1040</th>
+                                <td>Emma Williams</td>
+                                <td>Floral Summer Dress</td>
+                                <td><span class="badge bg-success">Delivery</span></td>
+                                <td>Oct 21, 2023</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

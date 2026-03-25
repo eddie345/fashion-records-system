@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f8f9fa; }
+        .sidebar { background-color: #212529; color: white; width: 250px; min-height: 100vh; padding: 20px 0; position: fixed; }
+        .sidebar .nav-link { color: #adb5bd; padding: 10px 20px; font-weight: 500; }
+        .sidebar .nav-link:hover, .sidebar .nav-link.active { color: white; background-color: #343a40; }
+        .main-content { margin-left: 250px; padding: 30px; }
+        @media (max-width: 768px) {
+            .sidebar { display: none; }
+            .main-content { margin-left: 0; margin-top: 60px; padding: 15px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar d-none d-md-block">
+        <h4 class="text-center mb-4 px-3">Beon Fidence</h4>
+        <nav class="nav flex-column">
+            <a class="nav-link" href="dashboard.html">Dashboard</a>
+            <a class="nav-link" href="client_form.html">Clients & Measurements</a>
+            <a class="nav-link active" href="inventory.html">Inventory Management</a>
+        </nav>
+    </div>
+
+    <!-- Mobile navbar -->
+    <nav class="navbar navbar-dark bg-dark d-md-none fixed-top w-100 px-3">
+        <a class="navbar-brand" href="#">Beon Fidence</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mobileMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mobileMenu">
+            <ul class="navbar-nav ms-auto mt-2">
+                <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" href="client_form.html">Clients</a></li>
+                <li class="nav-item"><a class="nav-link active" href="inventory.html">Inventory</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>Inventory & Materials</h2>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addFabricModal">+ Add Fabric</button>
+        </div>
+        
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th class="ps-4">Item ID</th>
+                                <th>Fabric Name</th>
+                                <th>Origin</th>
+                                <th>Current Qty (Yards)</th>
+                                <th>Reorder Alert</th>
+                                <th class="text-end pe-4">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th class="ps-4">#FAB-001</th>
+                                <td>Premium Silk Array</td>
+                                <td>Italy</td>
+                                <td class="fw-bold text-success">45.00</td>
+                                <td>Threshold: <span class="badge bg-secondary">10.00</span></td>
+                                <td class="text-end pe-4">
+                                    <button class="btn btn-sm btn-outline-primary">Update Qty</button>
+                                </td>
+                            </tr>
+                            <tr class="table-danger">
+                                <th class="ps-4">#FAB-002</th>
+                                <td>Cotton Blend Standard</td>
+                                <td>India</td>
+                                <td class="fw-bold text-danger">4.50</td>
+                                <td>Threshold: <span class="badge bg-danger">15.00</span></td>
+                                <td class="text-end pe-4">
+                                    <button class="btn btn-sm btn-outline-primary">Update Qty</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="ps-4">#FAB-003</th>
+                                <td>Linen Summer Weave</td>
+                                <td>Turkey</td>
+                                <td class="fw-bold">22.00</td>
+                                <td>Threshold: <span class="badge bg-secondary">12.00</span></td>
+                                <td class="text-end pe-4">
+                                    <button class="btn btn-sm btn-outline-primary">Update Qty</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for adding fabric -->
+    <div class="modal fade" id="addFabricModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">New Fabric Entry</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="newFabricForm">
+                        <div class="mb-3">
+                            <label class="form-label">Fabric Name</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Origin / Supplier</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="row">
+                            <div class="col-6 mb-3">
+                                <label class="form-label">Initial Qty (Yards)</label>
+                                <input type="number" step="0.1" class="form-control" required>
+                            </div>
+                            <div class="col-6 mb-3">
+                                <label class="form-label">Alert Threshold</label>
+                                <input type="number" step="0.1" class="form-control" required>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save Item</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

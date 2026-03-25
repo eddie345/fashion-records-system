@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Portfolio Archive</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f8f9fa; display: flex; min-height: 100vh; margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .sidebar { background-color: #212529; color: white; width: 250px; flex-shrink: 0; padding: 20px 0; }
+        .sidebar .nav-link { color: #adb5bd; padding: 10px 20px; font-weight: 500; }
+        .sidebar .nav-link:hover, .sidebar .nav-link.active { color: white; background-color: #343a40; }
+        .main-content { flex-grow: 1; padding: 30px; overflow-y: auto; }
+        .design-card img { height: 200px; object-fit: cover; }
+    </style>
+</head>
+<body>
+    <div class="sidebar d-none d-md-block">
+        <h4 class="text-center mb-4 px-3">Beon Fidence</h4>
+        <nav class="nav flex-column">
+            <a class="nav-link" href="dashboard.html">Dashboard</a>
+            <a class="nav-link" href="client_form.html">Clients & Measurements</a>
+            <a class="nav-link" href="inventory.html">Inventory Management</a>
+            <a class="nav-link active" href="designs.html">Design Portfolio</a>
+            <a class="nav-link" href="orders.html">Orders</a>
+        </nav>
+    </div>
+
+    <div class="main-content">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>Design Portfolio Archive</h2>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#uploadDesignModal">+ Upload Design</button>
+        </div>
+        
+        <div class="row g-4">
+            <!-- Sample Design Card 1 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card design-card shadow-sm border-0 h-100">
+                    <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&q=80&w=400&h=300" class="card-img-top" alt="Design Sketch">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">Summer Suite 2024</h5>
+                        <p class="card-text text-muted small">Uploaded by Admin • Oct 14, 2023</p>
+                        <p class="card-text">Core sketch components for the new summer suite utilizing linen weave fabrics.</p>
+                        <a href="#" class="btn btn-sm btn-outline-secondary">Download Asset</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Sample Design Card 2 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card design-card shadow-sm border-0 h-100">
+                    <img src="https://images.unsplash.com/photo-1558769132-cb1fac0840db?auto=format&fit=crop&q=80&w=400&h=300" class="card-img-top" alt="Design Sketch">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">Evening Gown (Blue)</h5>
+                        <p class="card-text text-muted small">Uploaded by Designer • Oct 10, 2023</p>
+                        <p class="card-text">Premium silk array draped evening gown blueprint.</p>
+                        <a href="#" class="btn btn-sm btn-outline-secondary">Download Asset</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Upload Modal -->
+    <div class="modal fade" id="uploadDesignModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Upload New Design Spec</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">Title</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Description / Notes</label>
+                            <textarea class="form-control" rows="3"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Select File (.png, .pdf, .jpg)</label>
+                            <input class="form-control" type="file" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button class="btn btn-primary">Archive Design</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
